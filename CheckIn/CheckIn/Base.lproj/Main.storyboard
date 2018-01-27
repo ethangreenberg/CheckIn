@@ -26,22 +26,32 @@
                                     <constraint firstAttribute="width" secondItem="cau-x0-Iqb" secondAttribute="height" multiplier="1:1" id="Sfd-md-sUB"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfEmojis">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="arcWidth">
                                         <real key="value" value="70"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="emojiSize">
-                                        <real key="value" value="80"/>
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gapWidth">
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you feeling?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn2-UB-9pz">
+                                <rect key="frame" x="16" y="36" width="343" height="110"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cau-x0-Iqb" firstAttribute="top" secondItem="Jn2-UB-9pz" secondAttribute="bottom" constant="16" id="6Rs-HQ-XGb"/>
+                            <constraint firstItem="Jn2-UB-9pz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Go2-Oe-Bi8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cau-x0-Iqb" secondAttribute="trailing" constant="16" id="LCE-Sn-IKG"/>
                             <constraint firstItem="cau-x0-Iqb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NTq-CB-kq7"/>
+                            <constraint firstItem="Jn2-UB-9pz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="OEH-LW-cBX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jn2-UB-9pz" secondAttribute="trailing" constant="16" id="k1V-L6-v7O"/>
                             <constraint firstItem="cau-x0-Iqb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ozG-r7-NgD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
