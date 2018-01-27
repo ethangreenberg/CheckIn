@@ -2,8 +2,8 @@
 //  CheckInTests.swift
 //  CheckInTests
 //
-//  Created by David on 1/27/18.
-//  Copyright © 2018 Team CheckIn. All rights reserved.
+//  Created by Katerina Rusa on 1/27/18.
+//  Copyright © 2018 TeamCheckIn. All rights reserved.
 //
 
 import XCTest
@@ -28,7 +28,7 @@ class CheckInTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

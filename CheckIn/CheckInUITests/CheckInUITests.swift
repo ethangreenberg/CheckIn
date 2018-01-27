@@ -2,8 +2,8 @@
 //  CheckInUITests.swift
 //  CheckInUITests
 //
-//  Created by David on 1/27/18.
-//  Copyright © 2018 Team CheckIn. All rights reserved.
+//  Created by Katerina Rusa on 1/27/18.
+//  Copyright © 2018 TeamCheckIn. All rights reserved.
 //
 
 import XCTest
