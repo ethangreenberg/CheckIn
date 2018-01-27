@@ -24,16 +24,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFN-Nd-dbc">
-                                <rect key="frame" x="63" y="97" width="249" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFN-Nd-dbc">
+                                <rect key="frame" x="16" y="100" width="343" height="65"/>
                                 <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGG-E6-yu7">
                                 <rect key="frame" x="72" y="519" width="230" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+=======
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGG-E6-yu7">
+                                <rect key="frame" x="16" y="552" width="343" height="51"/>
+>>>>>>> 10e27486fcd58b7284922a53140c48d88eb2f453
                                 <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="30"/>
                                 <state key="normal" title="Get Started"/>
                                 <connections>
@@ -42,6 +46,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ebg-PJ-Y0R" firstAttribute="bottom" secondItem="yGG-E6-yu7" secondAttribute="bottom" constant="64" id="0fK-Eb-701"/>
+                            <constraint firstItem="fFN-Nd-dbc" firstAttribute="leading" secondItem="ebg-PJ-Y0R" secondAttribute="leading" constant="16" id="3AM-yy-DSk"/>
+                            <constraint firstItem="ebg-PJ-Y0R" firstAttribute="trailing" secondItem="yGG-E6-yu7" secondAttribute="trailing" constant="16" id="IbD-Ph-jPw"/>
+                            <constraint firstItem="fFN-Nd-dbc" firstAttribute="top" secondItem="ebg-PJ-Y0R" secondAttribute="top" constant="80" id="oqF-rk-475"/>
+                            <constraint firstItem="ebg-PJ-Y0R" firstAttribute="trailing" secondItem="fFN-Nd-dbc" secondAttribute="trailing" constant="16" id="wvZ-Ul-F6m"/>
+                            <constraint firstItem="yGG-E6-yu7" firstAttribute="leading" secondItem="ebg-PJ-Y0R" secondAttribute="leading" constant="16" id="yOI-Ca-aA7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ebg-PJ-Y0R"/>
                     </view>
                 </viewController>
@@ -185,22 +197,32 @@
                                     <constraint firstAttribute="width" secondItem="cau-x0-Iqb" secondAttribute="height" multiplier="1:1" id="Sfd-md-sUB"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfEmojis">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="arcWidth">
                                         <real key="value" value="70"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="emojiSize">
-                                        <real key="value" value="80"/>
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gapWidth">
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you feeling?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn2-UB-9pz">
+                                <rect key="frame" x="16" y="36" width="343" height="110"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cau-x0-Iqb" firstAttribute="top" secondItem="Jn2-UB-9pz" secondAttribute="bottom" constant="16" id="6Rs-HQ-XGb"/>
+                            <constraint firstItem="Jn2-UB-9pz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Go2-Oe-Bi8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cau-x0-Iqb" secondAttribute="trailing" constant="16" id="LCE-Sn-IKG"/>
                             <constraint firstItem="cau-x0-Iqb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NTq-CB-kq7"/>
+                            <constraint firstItem="Jn2-UB-9pz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="OEH-LW-cBX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jn2-UB-9pz" secondAttribute="trailing" constant="16" id="k1V-L6-v7O"/>
                             <constraint firstItem="cau-x0-Iqb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ozG-r7-NgD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
