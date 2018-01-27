@@ -24,16 +24,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFN-Nd-dbc">
-                                <rect key="frame" x="63" y="97" width="249" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFN-Nd-dbc">
+                                <rect key="frame" x="16" y="100" width="343" height="65"/>
                                 <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGG-E6-yu7">
-                                <rect key="frame" x="140" y="524" width="94" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGG-E6-yu7">
+                                <rect key="frame" x="16" y="552" width="343" height="51"/>
                                 <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="30"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -42,6 +40,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ebg-PJ-Y0R" firstAttribute="bottom" secondItem="yGG-E6-yu7" secondAttribute="bottom" constant="64" id="0fK-Eb-701"/>
+                            <constraint firstItem="fFN-Nd-dbc" firstAttribute="leading" secondItem="ebg-PJ-Y0R" secondAttribute="leading" constant="16" id="3AM-yy-DSk"/>
+                            <constraint firstItem="ebg-PJ-Y0R" firstAttribute="trailing" secondItem="yGG-E6-yu7" secondAttribute="trailing" constant="16" id="IbD-Ph-jPw"/>
+                            <constraint firstItem="fFN-Nd-dbc" firstAttribute="top" secondItem="ebg-PJ-Y0R" secondAttribute="top" constant="80" id="oqF-rk-475"/>
+                            <constraint firstItem="ebg-PJ-Y0R" firstAttribute="trailing" secondItem="fFN-Nd-dbc" secondAttribute="trailing" constant="16" id="wvZ-Ul-F6m"/>
+                            <constraint firstItem="yGG-E6-yu7" firstAttribute="leading" secondItem="ebg-PJ-Y0R" secondAttribute="leading" constant="16" id="yOI-Ca-aA7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ebg-PJ-Y0R"/>
                     </view>
                 </viewController>
