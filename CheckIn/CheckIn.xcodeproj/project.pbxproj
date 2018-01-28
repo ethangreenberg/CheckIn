@@ -15,6 +15,7 @@
 		06E4559F201D1534001C72AA /* CheckInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E4559E201D1534001C72AA /* CheckInTests.swift */; };
 		06E455AA201D1534001C72AA /* CheckInUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E455A9201D1534001C72AA /* CheckInUITests.swift */; };
 		06E455B8201D16A1001C72AA /* MoodSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E455B7201D16A1001C72AA /* MoodSelector.swift */; };
+		06E455BA201D3BAE001C72AA /* ViewControllerMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E455B9201D3BAE001C72AA /* ViewControllerMood.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		06E455A9201D1534001C72AA /* CheckInUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInUITests.swift; sourceTree = "<group>"; };
 		06E455AB201D1534001C72AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06E455B7201D16A1001C72AA /* MoodSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSelector.swift; sourceTree = "<group>"; };
+		06E455B9201D3BAE001C72AA /* ViewControllerMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerMood.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				06E45589201D1534001C72AA /* AppDelegate.swift */,
 				06E4558B201D1534001C72AA /* ViewController.swift */,
 				06E4558D201D1534001C72AA /* Main.storyboard */,
+				06E455B9201D3BAE001C72AA /* ViewControllerMood.swift */,
 				06E455B7201D16A1001C72AA /* MoodSelector.swift */,
 				06E45590201D1534001C72AA /* Assets.xcassets */,
 				06E45592201D1534001C72AA /* LaunchScreen.storyboard */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06E455B8201D16A1001C72AA /* MoodSelector.swift in Sources */,
+				06E455BA201D3BAE001C72AA /* ViewControllerMood.swift in Sources */,
 				06E4558C201D1534001C72AA /* ViewController.swift in Sources */,
 				06E4558A201D1534001C72AA /* AppDelegate.swift in Sources */,
 			);
