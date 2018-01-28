@@ -16,12 +16,15 @@ import UIKit
                                     UIColor(red: 219/255, green: 50/255, blue: 54/255, alpha: 1), // angry
                                     UIColor(red: 60/255, green: 184/255, blue: 84/255, alpha: 1) // funny
                                     ]
-    @IBInspectable var arcOuter: CGFloat = 85
-    @IBInspectable var arcInner: CGFloat = 30
-    @IBInspectable var emojiSize: CGFloat = 20
-    @IBInspectable var gapWidth: CGFloat = 5
-    @IBInspectable var smoothing: CGFloat = 0.9
+    // These all could be @IBInspectable vars, but that breaks the view sometimes for some reason.
+    private let arcOuter: CGFloat = 90
+    private let arcInner: CGFloat = 25
+    private let emojiSize: CGFloat = 20
+    private let gapWidth: CGFloat = 5
+    private let smoothing: CGFloat = 0.65
     private let startAngle: CGFloat = 3 / 2 * CGFloat.pi
+    
+    // These variables are needed for animation and to store th emoji choices/ current touch selection.
     private var sliceOuterRadii: Array = [CGFloat]()
     private var emojiArray:Array = [String]()
     public var currentlySelected: Int = -1
@@ -79,12 +82,34 @@ import UIKit
             }
             // Only works when >0 so it adds 2pi until >0 (bc of truncatingRem since no % for CGFloat)
             let positionAngle: CGFloat = initialPositionAngle.truncatingRemainder(dividingBy: 2 * CGFloat.pi)
-            currentlySelected = Int(positionAngle / (2 * CGFloat.pi) * CGFloat(numberOfEmojis))
+            
+            // Makes sure the pointer is inside the circle.
+            let centerPoint: CGPoint = CGPoint(x: bounds.width * 0.5, y: bounds.height * 0.5)
+            let xDiff: CGFloat = position.x - centerPoint.x
+            let yDiff: CGFloat = position.y - centerPoint.y
+            let distance: CGFloat = pow(xDiff * xDiff + yDiff * yDiff, 0.5)
+            if distance < min(centerPoint.x, centerPoint.x) {
+                currentlySelected = Int(positionAngle / (2 * CGFloat.pi) * CGFloat(numberOfEmojis))
+            } else {
+                currentlySelected = -1
+            }
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        currentlySelected = -1
+        // Makes sure the pointer is inside the circle.
+        if let touch = touches.first {
+            let position = touch.location(in: self)
+            let centerPoint: CGPoint = CGPoint(x: bounds.width * 0.5, y: bounds.height * 0.5)
+            let xDiff: CGFloat = position.x - centerPoint.x
+            let yDiff: CGFloat = position.y - centerPoint.y
+            let distance: CGFloat = pow(xDiff * xDiff + yDiff * yDiff, 0.5)
+            if distance < min(centerPoint.x, centerPoint.x) {
+                // If the click release is within the outer radius, a selection is made.
+                print("Clicked section " + String(currentlySelected))
+            }
+            currentlySelected = -1
+        }
     }
     
     public func checkArray() {
