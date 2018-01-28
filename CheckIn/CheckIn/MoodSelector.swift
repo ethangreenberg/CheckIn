@@ -10,105 +10,28 @@ import UIKit
 
 @IBDesignable class MoodSelector: UIView {
     private let numberOfEmojis: Int = 5
-    private let colorArray:Array = [UIColor(red: 244/255, green: 194/255, blue: 13/255, alpha: 1), // happy
+    private let colorArray:Array = [UIColor(red: 219/255, green: 50/255, blue: 54/255, alpha: 1), // happy
                                     UIColor(red: 72/255, green: 133/255, blue: 237/255, alpha: 1), // sad
-                                    UIColor(red: 183/255, green: 112/255, blue: 209/255, alpha: 1), // stressed
-                                    UIColor(red: 219/255, green: 50/255, blue: 54/255, alpha: 1), // angry
-                                    UIColor(red: 60/255, green: 184/255, blue: 84/255, alpha: 1) // funny
-                                    ]
-    @IBInspectable var arcOuter: CGFloat = 85
-    @IBInspectable var arcInner: CGFloat = 30
+                                    UIColor(red: 60/255, green: 184/255, blue: 84/255, alpha: 1), // stressed
+                                    UIColor(red: 244/255, green: 194/255, blue: 13/255, alpha: 1), // funny
+                                    UIColor(red: 183/255, green: 112/255, blue: 209/255, alpha: 1)] // tired
+    @IBInspectable var arcWidth: CGFloat = 60
     @IBInspectable var emojiSize: CGFloat = 20
-    @IBInspectable var gapWidth: CGFloat = 5
-    @IBInspectable var smoothing: CGFloat = 0.9
-    private let startAngle: CGFloat = 3 / 2 * CGFloat.pi
-    private var sliceOuterRadii: Array = [CGFloat]()
-    private var emojiArray:Array = [String]()
-    public var currentlySelected: Int = -1
-    
-    init() {
-        super.init(frame: .zero)
-        self.initialize()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.initialize()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.initialize()
-    }
-    
-    func initialize() {
-        print("You have created a mood selector.");
-        self.translatesAutoresizingMaskIntoConstraints = false
-        chooseEmojis()
-    }
-    
-    public func updateSliceOuterRadii() {
-        checkArray()
-        for index in 0...numberOfEmojis - 1 {
-            let radiusSelected: CGFloat = max(bounds.width * 0.5, bounds.height * 0.5)
-            let radiusNormal: CGFloat = max(bounds.width * 0.5, bounds.height * 0.5) * arcOuter * 0.01
-            if index == currentlySelected {
-                sliceOuterRadii[index] = sliceOuterRadii[index] + (radiusSelected - sliceOuterRadii[index]) * (1 - smoothing)
-            } else {
-                sliceOuterRadii[index] = sliceOuterRadii[index] + (radiusNormal - sliceOuterRadii[index]) * (1 - smoothing)
-            }
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        touchUpdate(touches: touches)
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        touchUpdate(touches: touches)
-    }
-    
-    private func touchUpdate(touches: Set<UITouch>) {
-        if let touch = touches.first {
-            let position = touch.location(in: self)
-            let height: CGFloat = position.y - bounds.height * 0.5
-            let width: CGFloat = position.x - bounds.width * 0.5
-            var initialPositionAngle: CGFloat = -startAngle + atan2(height, width)
-            while initialPositionAngle < 0 {
-                initialPositionAngle += 2 * CGFloat.pi
-            }
-            // Only works when >0 so it adds 2pi until >0 (bc of truncatingRem since no % for CGFloat)
-            let positionAngle: CGFloat = initialPositionAngle.truncatingRemainder(dividingBy: 2 * CGFloat.pi)
-            currentlySelected = Int(positionAngle / (2 * CGFloat.pi) * CGFloat(numberOfEmojis))
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        currentlySelected = -1
-    }
-    
-    public func checkArray() {
-        if sliceOuterRadii.count == 0 {
-            for _ in 0...numberOfEmojis - 1 {
-                sliceOuterRadii.append(max(bounds.width * 0.5, bounds.height * 0.5) * arcOuter * 0.01)
-            }
-        }
-    }
+    @IBInspectable var gapWidth: CGFloat = 20
     
     override func draw(_ rect: CGRect) {
-        checkArray()
-        
         // Sets up correctedEmojiSize
         let correctedEmojiSize: CGFloat = max(bounds.width, bounds.height) * emojiSize * 0.01
         
         // Sets up arc properties based on view characteristics.
         let arcCenter: CGPoint = CGPoint(x: bounds.width * 0.5, y: bounds.height * 0.5)
-        let arcRadiusInner: CGFloat = max(bounds.width * 0.5, bounds.height * 0.5) * arcInner * 0.01
+        let arcRadiusOuter: CGFloat = max(bounds.width * 0.5, bounds.height * 0.5)
+        let arcRadiusInner: CGFloat = arcRadiusOuter * (1 - arcWidth * 0.01)
+        let startAngle: CGFloat = 3 / 2 * CGFloat.pi
         let angleIncrement: CGFloat = 2 * CGFloat.pi / CGFloat(numberOfEmojis)
         
         // Draws the arcs and emojis.
         for index: Int in 0...numberOfEmojis - 1 {
-            let arcRadiusOuter = sliceOuterRadii[index]
             let arcStartAngle: CGFloat = startAngle + CGFloat(index) * angleIncrement
             let arcEndAngle: CGFloat = startAngle + (CGFloat(index) + 1) * angleIncrement
             
@@ -128,7 +51,7 @@ import UIKit
             let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = NSTextAlignment.center;
             let fontAttributes = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: correctedEmojiSize)!, NSAttributedStringKey.paragraphStyle: paragraphStyle]
-            let currentEmoji: String = emojiArray[index]
+            let currentEmoji: String = getEmoji()
             let emojiAngle: CGFloat = (arcStartAngle + arcEndAngle) * 0.5
             let emojiRadius: CGFloat = (arcRadiusOuter + arcRadiusInner) * 0.5
             let emojiBox: CGRect = CGRect(x: bounds.width * 0.5 + emojiRadius * cos(emojiAngle) + correctedEmojiSize * -0.75,
@@ -145,23 +68,38 @@ import UIKit
         for index: Int in 0...numberOfEmojis - 1 {
             let currentAngle: CGFloat = startAngle + CGFloat(index) * angleIncrement
             context.move(to: CGPoint(x: bounds.width * 0.5, y: bounds.height * 0.5))
-            context.addLine(to: CGPoint(
-                x: bounds.width * 0.5 + cos(currentAngle) * max(bounds.width, bounds.height),
-                y: bounds.height * 0.5 + sin(currentAngle) * max(bounds.width, bounds.height)))
+            context.addLine(to: CGPoint(x: bounds.width * 0.5 + cos(currentAngle) * arcRadiusOuter * 1.1, y: bounds.height * 0.5 + sin(currentAngle) * arcRadiusOuter * 1.1))
             context.strokePath()
         }
     }
     
-    private func chooseEmojis() {
-        func randomEmoji(emojis: Array<String>) -> String {
-            let randomNumber: Int = Int(arc4random_uniform(UInt32(emojis.count)))
-            return emojis[randomNumber]
+    private func getEmoji() -> String {
+        let randomNumber: Int = Int(arc4random_uniform(10))
+        var returnEmoji: String
+        switch randomNumber {
+        case 0:
+            returnEmoji = "😊"
+        case 1:
+            returnEmoji = "😑"
+        case 2:
+            returnEmoji = "😥"
+        case 3:
+            returnEmoji = "😜"
+        case 4:
+            returnEmoji = "😤"
+        case 5:
+            returnEmoji = "😬"
+        case 6:
+            returnEmoji = "😱"
+        case 7:
+            returnEmoji = "🤒"
+        case 8:
+            returnEmoji = "😴"
+        case 9:
+            returnEmoji = "😃"
+        default:
+            returnEmoji = "😂"
         }
-        
-        emojiArray.append(randomEmoji(emojis: ["😁", "😄", "😊", "😝", "🙂"])) // happy
-        emojiArray.append(randomEmoji(emojis: ["😢", "😭", "😩", "😖"])) // sad
-        emojiArray.append(randomEmoji(emojis: ["😱", "😨", "😟", "😬", "😑", "😴", "🤒"])) // stressed
-        emojiArray.append(randomEmoji(emojis: ["😡", "😠", "😤", "😧"])) // angry
-        emojiArray.append(randomEmoji(emojis: ["😜", "😂", "🙃", "😎"])) // funny
+        return returnEmoji
     }
 }
